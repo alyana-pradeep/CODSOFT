@@ -1,0 +1,44 @@
+import random  # Random module is used to choose password
+
+import string   # string module will helps random to choose ascii , Digits and punctuation randomly
+
+while True:        # infinte loop
+
+    try:        #Attempting to execute a block of code that might cause an error.
+
+        user = int(input("enter the Password range:"))
+    # User defines the password length
+   
+        if user <= 0:      # checks is that a int or alpha or -ve
+
+            print("\nPlease enter +Ve values")   #prints output
+
+            continue  #goes to the EXCEPT directly if user enters alpha or -ve
+
+        password ="".join(random.choices(string.ascii_letters+string.digits+string.punctuation,k=user))
+
+        # stores the password of different characters
+	
+	print("\nPassword Generated:",password) 
+                                                # Password is Generated
+
+        total = sum(ord(char) for char in password) # checks the password strength
+
+        if total < 250:
+                        # if password is less than 250 than it is weak
+
+            print("\n password weak")
+                                        # output as weak
+
+        elif total > 500:    #nested loop checks the password strength if greater than 500 password is strong
+
+            print("\n password strength is medium")
+                                                    #output as strong
+
+       
+        break    # comes out of the loop
+
+    except ValueError:   # if any value Error 
+            
+            print("\nnot valid, please choose integer\n")
+                                                        # it prints the not valid!
